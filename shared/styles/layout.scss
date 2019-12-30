@@ -1,0 +1,96 @@
+@import './media-query-mixins';
+@import './dimentions';
+@import './colors';
+
+$artWidthPortrait: 100vw;
+$artWidthTablet: 43vw;
+$artWidthDesktop: 40vw;
+$artWidthWideScreen: 35vw;
+
+$contentWidthPortrait: 100vw;
+$contentWidthTablet: 43vw;
+$contentWidthDesktop: 40vw;
+$contentWidthWideScreen: 35vw;
+
+%page {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  //-webkit-overflow-scrolling: touch;
+
+  .art {
+    margin-top: 50px;
+    height: calc(40% - 50px);
+    width: $artWidthPortrait;
+    background: #E8E8E8;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content {
+    width: $contentWidthPortrait;
+    height: 60%;
+    padding: 0 10vw;
+    //background: palevioletred;
+    box-sizing: border-box;
+
+    @include orientation('portrait') {
+      @include media('>phone') {
+        width: 580px;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 90vw;
+      }
+    }
+
+    @include orientation('landscape') {
+      height: auto;
+    }
+  }
+
+  @include orientation('landscape') {
+    @include media('>phone') {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .art {
+        height: 100%;
+        margin-top: 0;
+        width: $artWidthTablet;
+      }
+
+      .content {
+        padding: 0;
+        width: $contentWidthTablet;
+      }
+
+      @include media('>tablet') {
+        .art {
+          width: $artWidthDesktop;
+        }
+
+        .content {
+          width: $contentWidthDesktop;
+        }
+      }
+
+      @include media('>desktop') {
+        .art {
+          width: $artWidthWideScreen;
+        }
+
+        .content {
+          width: $contentWidthWideScreen;
+        }
+      }
+    }
+  }
+}

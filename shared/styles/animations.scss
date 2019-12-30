@@ -1,0 +1,156 @@
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes leaveUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+}
+
+@keyframes leaveDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(5%);
+    opacity: 0;
+  }
+}
+
+@keyframes comeUp {
+  0% {
+    transform: translateY(5%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes comeDown {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes dance {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+$ease: cubic-bezier(0.23, 1, 0.32, 1);
+
+%bounce {
+  animation: bounce 1s linear infinite alternate-reverse;
+  animation-timing-function: $ease;
+}
+
+%dance {
+  animation: dance 1s linear infinite alternate-reverse;
+  animation-timing-function: $ease;
+}
+
+%fadeIn {
+  animation: fadeIn 1s forwards;
+  animation-timing-function: $ease;
+}
+
+%comeUp {
+  animation: comeUp 1s forwards;
+  animation-timing-function: $ease;
+}
+
+%comeDown {
+  animation: comeDown 1s forwards;
+  animation-timing-function: $ease;
+}
+
+%leaveUp {
+  animation: leaveUp 1s forwards;
+  animation-timing-function: $ease;
+}
+
+%leaveDown {
+  animation: leaveDown 1s forwards;
+  animation-timing-function: $ease;
+}
+
+%slideInLeft {
+  animation: slideInLeft 1s forwards;
+  animation-timing-function: $ease;
+}

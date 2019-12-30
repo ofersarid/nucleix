@@ -1,0 +1,72 @@
+@import '../styles/index';
+
+.bizCard {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  background: $light-gray;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0 10vw;
+  opacity: 0;
+  pointer-events: none;
+
+  @include orientation('landscape') {
+    opacity: 1;
+    pointer-events: all;
+
+    @include media('>phone') {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .mobileIcon {
+    position: fixed;
+    bottom: calc(10vw + 10px);
+    right: calc(10vw + 40px);
+    transform-origin: 100% 50%;
+    mix-blend-mode: luminosity;
+  }
+
+  .contentBox {
+    width: 266px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateY(-20px);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //font-size: 20px;
+    //font-weight: 100;
+    height: 66px;
+    width: 100%;
+    line-height: 1.5em;
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+
+    img {
+      opacity: 0;
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
+}
