@@ -6,6 +6,7 @@ import { withRouter } from 'next/router';
 import { ReactSVG } from 'react-svg';
 import { Tooltip } from 'react-tippy';
 import autoBind from 'auto-bind';
+import moment from 'moment';
 import styles from './index.scss';
 import { Head } from '../containers';
 import { reactor } from '../services';
@@ -41,7 +42,6 @@ class Index extends React.PureComponent {
     const { data } = this.props;
     // const isMobile = useSelector(device.selectors.type) === 'mobile';
     const { filter, showFilter } = this.state;
-    console.log(data);
     return (
       <div className={styles.pageContainer} >
         <Head title="Clinical - Nucleix" />
@@ -67,6 +67,32 @@ class Index extends React.PureComponent {
             <ReactSVG src="/static/images/chevron.svg" />
           </div >
         </Tooltip >
+        <ul className={styles.postList} >
+          {data.map(post => {
+            console.log(post.getIn(['date', 'seconds']));
+            return (
+              <li key={post.get('id')} >
+                <div className={styles.left} >
+                  <div >{moment(post.getIn(['date', 'seconds']) * 1000).format('D, MMM')}</div >
+                  <div className={styles.year} >{moment(post.getIn(['date', 'seconds']) * 1000).format('YYYY')}</div >
+                </div >
+                <div className={styles.right} >
+                  <img className={styles.pic} src={post.get('pic--')} />
+                  <h4 className={styles.description} >{post.get('desscription')}</h4 >
+                  <div className={styles.authors} >{post.get('outhors')}</div >
+                  <a
+                    className={styles.readeMoreLink}
+                    href={post.get('link')}
+                    target="_blank"
+                    rel="noopener noreferrer" >
+                    read more
+                    <ReactSVG src="/static/images/chevron.svg" />
+                  </a >
+                </div >
+              </li >
+            );
+          })}
+        </ul >
       </div >
     );
   }

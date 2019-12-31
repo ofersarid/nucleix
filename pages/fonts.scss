@@ -49,3 +49,25 @@
   font-style: italic;
   font-weight: 800;
 }
+
+@font-face {
+  font-family: 'Pier Sans';
+  src: url('/fonts/pier-sans/PierSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pier Sans';
+  src: url('/fonts/pier-sans/PierSans-Bold.woff2') format('woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('/fonts/segoe-ui/SegoeUI.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('/fonts/segoe-ui/SegoeUI-Semibold.woff2') format('woff');
+  font-weight: bold;
+}

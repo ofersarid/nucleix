@@ -10,7 +10,10 @@ body {
   font-size: 17px;
   font-weight: 300;
   letter-spacing: 0.01em;
+  line-height: 1.7em;
   margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .indexPage {
     display: flex;
@@ -61,6 +64,13 @@ h3 {
   letter-spacing: 0.01em;
 }
 
+h4 {
+  font-family: 'Segoe UI', Arial;
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.9em;
+  margin: 0;
+}
 
 button {
   font-size: 17px;
@@ -77,6 +87,15 @@ button {
   &:active {
     background: darken(#E8E8E8, 5%);
   }
+}
+
+a {
+  color: $blue;
+  padding: 2px 2px 0;
+  text-decoration: none;
+  border-bottom: 1px solid $blue;
+  display: inline-block;
+  line-height: 1em;
 }
 
 .comeUp {

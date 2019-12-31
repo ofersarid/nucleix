@@ -26,16 +26,13 @@
 
   svg {
     width: 34px;
-    //margin-left: 10px;
-    //position: absolute;
-    //right: 10px;
-    //top: 19%;
+    transform: translateY(4px);
     transition: 1s $ease;
   }
 
   &.open {
     svg {
-      transform: scaleY(-1) translateY(-2px);
+      transform: scaleY(-1) translateY(-5px);
     }
   }
 }
@@ -50,5 +47,70 @@ ul.menu {
   li {
     padding: 10px 20px;
     cursor: pointer;
+  }
+}
+
+ul.postList {
+  list-style: none;
+  margin: 90px 0 0 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 60px;
+    min-height: 50px;
+    display: flex;
+
+    .left {
+      color: #707070;
+      font-size: 18px;
+      //width: 80px;
+      font-family: 'Pier Sans', sans-serif;
+      padding-top: 5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      white-space: nowrap;
+
+      .year {
+        font-size: 17px;
+        font-weight: normal;
+      }
+    }
+
+    .right {
+      width: 100%;
+      padding-left: 5%;
+    }
+
+    .pic {
+      width: 105px;
+      padding: 0 50px;
+      box-shadow: 1px 1px 4px rgba(black, 0.15);
+      border-radius: 3px;
+    }
+
+    .description {
+      padding-top: 15px;
+      padding-bottom: 20px;
+      border-bottom: solid 1px #eee;
+    }
+
+    .authors {
+      color: #707070;
+      margin-top: 22px;
+      //line-height: 25px;
+    }
+
+    .readeMoreLink {
+      margin-top: 20px;
+      display: inline-flex;
+      position: relative;
+
+      svg {
+        width: 25px;
+        position: absolute;
+        right: -25px;
+        transform: rotate(-90deg) translateX(2px);
+      }
+    }
   }
 }
