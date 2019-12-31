@@ -6,6 +6,7 @@ import withRedux from 'next-redux-wrapper';
 import { fromJS } from 'immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
+import '../lib/tippy.scss';
 import combined from '../combined-reducers';
 import { reactor, device } from '../services';
 import { Card } from '../shared';
@@ -42,7 +43,7 @@ class MyApp extends App {
           <Component {...pageProps} isServer={isServer} />
         </div >
         <Card
-          logo="/images/logo.svg"
+          logo="/static/images/logo.svg"
           firstLine="Lorem Ipsum"
           secondLine="Lorem Ipsum"
           thirdLine="Lorem Ipsum"
