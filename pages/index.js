@@ -55,10 +55,21 @@ class Index extends React.PureComponent {
     this.setState({ showFilter: !showFilter });
   }
 
+  filterData(data) {
+    const { filter } = this.state;
+    if (filter === 'All Products') {
+      return data;
+    }
+    return data.filter(item => {
+      return item.get('affilation') === filter;
+    });
+  }
+
   render() {
     const { data } = this.props;
     // const isMobile = useSelector(device.selectors.type) === 'mobile';
     const { filter, showFilter } = this.state;
+    const filtered = this.filterData(data);
     return (
       <div className={styles.pageContainer} >
         <Head title="Clinical - Nucleix" />
@@ -73,7 +84,10 @@ class Index extends React.PureComponent {
           html={(
             <ul className={cx(styles.menu)} >
               {this.FILTERS.map(fltr => (
-                <li key={fltr} onClick={this.setFilter} >{fltr}</li >
+                <li
+                  key={fltr}
+                  onClick={this.setFilter}
+                  className={cx({ [styles.selected]: fltr === filter })} >{fltr}</li >
               ))}
             </ul >
           )}
@@ -81,37 +95,39 @@ class Index extends React.PureComponent {
         >
           <div className={cx(styles.triggerContainer, { [styles.open]: showFilter })} onClick={this.toggleDropMenu} >
             {filter}
-            <ReactSVG src="/static/images/chevron.svg" />
+            <ReactSVG src="/images/chevron.svg" />
           </div >
         </Tooltip >
-        <ul className={styles.postList} >
-          <Fade big cascade >
-            {data.map(post => {
-              const date = post.get('date').toDate ? post.get('date').toDate() : (post.getIn(['date', 'seconds']) * 1000);
-              return (
-                <li key={post.get('id')} className={styles.postItem} >
-                  <div className={styles.left} >
-                    <div >{moment(date).format('D, MMM')}</div >
-                    <div className={styles.year} >{moment(date).format('YYYY')}</div >
-                  </div >
-                  <div className={styles.right} >
-                    <img className={styles.pic} src={post.get('pic--')} />
-                    <h4 className={styles.description} >{post.get('desscription')}</h4 >
-                    <div className={styles.authors} >{post.get('outhors')}</div >
-                    <a
-                      className={styles.readeMoreLink}
-                      href={post.get('link')}
-                      target="_blank"
-                      rel="noopener noreferrer" >
-                      read more
-                      <ReactSVG src="/static/images/chevron.svg" />
-                    </a >
-                  </div >
-                </li >
-              );
-            })}
-          </Fade >
-        </ul >
+        {filtered.size > 0 && (
+          <ul className={styles.postList} >
+            <Fade big cascade >
+              {this.filterData(data).map(post => {
+                const date = post.get('date').toDate ? post.get('date').toDate() : (post.getIn(['date', 'seconds']) * 1000);
+                return (
+                  <li key={post.get('id')} className={styles.postItem} >
+                    <div className={styles.left} >
+                      <div >{moment(date).format('D, MMM')}</div >
+                      <div className={styles.year} >{moment(date).format('YYYY')}</div >
+                    </div >
+                    <div className={styles.right} >
+                      <img className={styles.pic} src={post.get('pic--')} />
+                      <h4 className={styles.description} >{post.get('desscription')}</h4 >
+                      <div className={styles.authors} >{post.get('outhors')}</div >
+                      <a
+                        className={styles.readeMoreLink}
+                        href={post.get('link')}
+                        target="_blank"
+                        rel="noopener noreferrer" >
+                        read more
+                        <ReactSVG src="/static/images/chevron.svg" />
+                      </a >
+                    </div >
+                  </li >
+                );
+              })}
+            </Fade >
+          </ul >
+        )}
       </div >
     );
   }

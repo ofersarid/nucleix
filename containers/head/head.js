@@ -5,7 +5,7 @@ const HtmlHeadTag = ({ title, description }) => (
   <Head >
     <meta charSet="utf-8" httpEquiv="Content-Type" content="Text/html" />
     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" href={`/static/images/favicon.ico?v=${new Date().getTime()}`} />
+    <link rel="icon" href={`/images/favicon.ico?v=${new Date().getTime()}`} />
     <meta name="description" content={description || 'Lorem Ipsum'} />
     <meta
       name='viewport'
