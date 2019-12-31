@@ -2,7 +2,10 @@
 
 .pageContainer {
   width: 100%;
-  max-width: 690px;
+  max-width: 720px;
+  box-sizing: border-box;
+  padding: 0 30px;
+  margin-top: 50px;
 }
 
 .dropMenuTrigger {
@@ -12,7 +15,7 @@
   border: 2px solid $blue;
   box-sizing: border-box;
   display: inline-flex !important;
-  width: 193px;
+  width: 216px;
   cursor: pointer;
 }
 
@@ -23,6 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  white-space: nowrap;
 
   svg {
     width: 34px;
@@ -55,10 +59,16 @@ ul.postList {
   margin: 90px 0 0 0;
   padding: 0;
 
-  li {
+  .postItem {
     margin-bottom: 60px;
     min-height: 50px;
     display: flex;
+    flex-direction: column;
+    opacity: 0;
+
+    @include orientation('landscape') {
+      flex-direction: row;
+    }
 
     .left {
       color: #707070;
@@ -73,12 +83,16 @@ ul.postList {
       .year {
         font-size: 17px;
         font-weight: normal;
+        margin-bottom: 20px;
       }
     }
 
     .right {
       width: 100%;
-      padding-left: 5%;
+
+      @include orientation('landscape') {
+        padding-left: 5%;
+      }
     }
 
     .pic {

@@ -1,5 +1,6 @@
 @import '../shared/styles/index';
 @import './fonts';
+//@import '../lib/animate';
 
 body {
   font-family: 'gibson', serif;
@@ -7,13 +8,18 @@ body {
   height: 100%;
   display: flex;
   color: $textGray;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 300;
   letter-spacing: 0.01em;
-  line-height: 1.7em;
+  line-height: 1.5em;
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
+
+  @include orientation('landscape') {
+    font-size: 17px;
+    line-height: 1.7em;
+  }
 
   .indexPage {
     display: flex;
@@ -112,4 +118,19 @@ a {
 
 .leaveDown {
   @extend %leaveDown;
+}
+
+:global {
+  .animated {
+    transition: 1s $ease;
+  }
+
+  .fadeInUp {
+    @extend %fadeInUp;
+  }
+
+  .tippy-tooltip {
+    background: rgba(#333, 0.9);
+    backdrop-filter: blur(2px);
+  }
 }

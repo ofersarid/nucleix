@@ -6,12 +6,15 @@ import withRedux from 'next-redux-wrapper';
 import { fromJS } from 'immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
+import revealConfig from 'react-reveal/globals';
 import '../lib/tippy.scss';
 import combined from '../combined-reducers';
 import { reactor, device } from '../services';
 import { Card } from '../shared';
 // import { Header } from '../containers';
 import styles from './styles.scss';
+
+revealConfig({ ssrFadeout: true });
 
 const makeStore = (initialState, options) => {
   const store = createStore(combined, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));

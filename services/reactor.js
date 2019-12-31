@@ -60,9 +60,11 @@ const getData = async (userId) => {
     for (const id of userData.collections) {
       const item = await db.collection('collections').doc(id).get();
       const data = await item.data();
+      const order = data.order.split(' | ');
       structuredData.collections[camelCase(data.name)] = [];
       const assets = await db.collection('collections').doc(id).collection('data').get();
-      assets.docs.forEach(asset => {
+      order.forEach(id => {
+        const asset = assets.docs.find(itm => itm.id === id);
         structuredData.collections[camelCase(data.name)].push({
           id: asset.id,
           ...asset.data()
