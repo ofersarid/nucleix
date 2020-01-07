@@ -137,6 +137,6 @@ export default compose(
   withRouter,
   connect(
     state => ({
-      data: reactor.selectors.collectionData(state, 'clinical')
+      data: reactor.selectors.collectionData(state, 'clinical posts')
     })
   ))(Index);

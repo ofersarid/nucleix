@@ -82,12 +82,6 @@ const getData = async (userId) => {
   return structuredData;
 };
 
-const camelize = str => {
-  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-    return index === 0 ? word.toLowerCase() : word.toUpperCase();
-  }).replace(/\s+/g, '');
-};
-
 const reducer = (state = fromJS({
   collections: {},
   pages: {}
@@ -115,8 +109,8 @@ const actions = {
 };
 
 const selectors = {
-  collectionData: (state, name) => state.getIn(['reactor', 'collections', name]),
-  pageData: (state, name) => state.getIn(['reactor', 'pages', camelize(name)]),
+  collectionData: (state, name) => state.getIn(['reactor', 'collections', camelCase(name)]),
+  pageData: (state, name) => state.getIn(['reactor', 'pages', camelCase(name)]),
   data: (state) => state.get('reactor')
 };
 
